@@ -1,5 +1,7 @@
 # How we run Grok Bot (a setup you can grow into)
 
+This repo is also a **template**. Use it as a GitHub template, or copy [`template/`](template/) into a private `bot-brain`. The general setup (thin context + spend Claude Code instead of Grok) lives in [`TEMPLATE.md`](TEMPLATE.md).
+
 A short map for someone new to AI agents. The chat is not the source of truth. Store things on purpose, keep threads thin, and let one home bot spin the rest.
 
 ## The idea
