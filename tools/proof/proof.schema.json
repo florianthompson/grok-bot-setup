@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/proof.schema.json",
+  "title": "proof.json",
+  "type": "object",
+  "required": ["schemaVersion", "ticket", "repo", "kind", "branch", "commitSha", "pr", "urls", "screenshots", "checks", "console", "createdAt", "createdBy"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "ticket": { "type": "string", "pattern": "^[A-Z][A-Z0-9]*-\\d+$" },
+    "repo": { "type": "string", "pattern": "^(none|[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)$" },
+    "kind": { "enum": ["web-app", "preview-site", "hosted-theme", "generic"] },
+    "proofKind": { "enum": ["ui", "non-ui"] },
+    "result": { "type": "string", "minLength": 1 },
+    "branch": { "type": "string", "minLength": 1 },
+    "commitSha": { "type": ["string", "null"], "pattern": "^[0-9a-f]{40}$" },
+    "pr": {
+      "type": ["object", "null"],
+      "required": ["url", "number", "state", "isDraft", "merged", "mergedAt"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "pattern": "^https://" },
+        "number": { "type": "integer", "minimum": 1 },
+        "state": { "enum": ["OPEN", "CLOSED", "MERGED"] },
+        "isDraft": { "type": "boolean" },
+        "merged": { "type": "boolean" },
+        "mergedAt": { "type": ["string", "null"] }
+      }
+    },
+    "urls": {
+      "type": "object",
+      "required": ["preview", "live"],
+      "additionalProperties": false,
+      "properties": {
+        "preview": { "type": ["string", "null"], "pattern": "^https?://" },
+        "live": { "type": ["string", "null"], "pattern": "^https?://" }
+      }
+    },
+    "screenshots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "viewport", "width", "height", "deviceScaleFactor", "route"],
+        "additionalProperties": false,
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "viewport": { "enum": ["desktop", "mobile390"] },
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 },
+          "deviceScaleFactor": { "type": "number", "exclusiveMinimum": 0 },
+          "route": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "command", "exitCode", "durationMs", "summary"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "command": { "type": "string", "minLength": 1 },
+          "exitCode": { "type": "integer" },
+          "durationMs": { "type": "integer", "minimum": 0 },
+          "summary": { "type": "string" }
+        }
+      }
+    },
+    "console": {
+      "type": "object",
+      "required": ["errors"],
+      "additionalProperties": false,
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["route", "viewport", "text"],
+            "additionalProperties": false,
+            "properties": {
+              "route": { "type": "string" },
+              "viewport": { "type": "string" },
+              "text": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "createdBy": { "type": "string", "minLength": 1 }
+  }
+}

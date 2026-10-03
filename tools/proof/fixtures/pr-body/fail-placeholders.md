@@ -1,0 +1,3 @@
+- Desktop screenshot: ![desktop](paste-https-image-url)
+- 390px screenshot: ![390px](paste-https-image-url)
+- Preview link: paste-https-preview-or-result-url
