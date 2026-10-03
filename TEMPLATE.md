@@ -96,10 +96,22 @@ Do not create twelve standing bots on day one. Do not proxy Stripe through Home.
 
 ## For the friend's Grok
 
-If you pulled `https://github.com/florianthompson/grok-bot-setup`:
+If you pulled `<your-org>/grok-bot-setup (this kit)`:
 
 1. Read this file and `README.md`.
 2. Copy `template/` into a private `bot-brain`.
 3. Adopt `agents/home/CHARTER.md` as your standing rules.
 4. Ask the human which coding subscription they already pay for. Put that name in Dev's charter. Default: Claude Code.
 5. Do not implement the next feature in this chat.
+
+## Going further: the full kit
+
+This repo now carries the rest of the operating model:
+
+- [`SETUP.md`](SETUP.md): step-by-step setup, from the private brain repo to the first merged PR.
+- [`CHARTER.md`](CHARTER.md) and [`RISK-POLICY.md`](RISK-POLICY.md): fleet rules and who approves what.
+- [`roles/`](roles/): Orchestrator, PM, Dev, and notes on other bots and `[TASK]` bots.
+- [`BRAIN-LAYOUT.md`](BRAIN-LAYOUT.md): what lives in the brain repo.
+- [`tools/proof/`](tools/proof/) and [`tools/proof/MERGE-GATES.md`](tools/proof/MERGE-GATES.md): proof and merge gates, with tests.
+- [`templates/LINEAR-TICKET.md`](templates/LINEAR-TICKET.md): the ticket template.
+- [`skills/`](skills/README.md): reusable generic skills.
