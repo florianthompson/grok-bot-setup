@@ -2,6 +2,9 @@
 
 A ticket is **done** when the proof gate passes. A PR is **mergeable** when every merge gate below is green.
 
+## Definition of done
+The gate checks the form of the evidence. The substance is a real end-user test: open the real flow in a browser, click through it, enter data, submit, reload, and confirm it stuck, at 1440 and 390 wide. Code tests are extra and never the proof. Fix what the test finds before reporting. Screenshots are for design or UI only, never of terminals, test output, or code. Work with nothing to look at uses `Proof kind: non-ui`, a `Result:` line, and a link, still verified by a real end-to-end run. Full text in [`CHARTER.md`](../../CHARTER.md).
+
 ## Proof gate
 `node tools/proof/proof_gate.mjs <TICKET> <path/to/proof.json> [--max-age-days 7]`
 

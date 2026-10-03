@@ -2,6 +2,8 @@
 
 Risk is set by **change type**, not by project. It decides who approves a merge and how much proof is needed.
 
+Both levels share the same definition of done: the owner sees the working feature, tested like a real end user (see `CHARTER.md`). Risk only changes who approves.
+
 ## Risk A: low blast radius
 Copy, CSS and UI, docs, previews, mocks, tests, internal tooling, skills, and brain files.
 

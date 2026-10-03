@@ -1,6 +1,6 @@
 # Fleet charter (generic)
 
-Rules every bot in the fleet follows. Copy this file into the root of your private brain repo and edit the owner-specific lines. Role detail lives in [`roles/`](roles/). Risk detail lives in [`RISK-POLICY.md`](RISK-POLICY.md).
+Rules every bot in the fleet follows. Copy this file into the root of your private brain repo and edit the owner-specific lines. Owner preferences are in [`OWNER-PREFERENCES.md`](OWNER-PREFERENCES.md). The one-page map is [`STRATEGY.md`](STRATEGY.md). Role detail lives in [`roles/`](roles/). Risk detail lives in [`RISK-POLICY.md`](RISK-POLICY.md).
 
 ## Truth and memory
 1. **The brain repo is the source of truth, not the chat.** Decisions, status, and next steps go into files the same day. A chat is scratch paper.
@@ -22,6 +22,17 @@ Rules every bot in the fleet follows. Copy this file into the root of your priva
 13. **The default branch is never a working branch.** Branch, PR, preview, merge. Never push straight to it.
 14. **Never force-push** a shared branch. Never merge your own PR on risk B.
 
+## Definition of done
+Done means **the owner sees the working feature.**
+- **Evidence for UI or design work:** screenshots at desktop (1440 wide) and 390 wide, plus the live or preview link.
+- **Test like a real end user.** Open the real flow in a browser, click through it, enter data, submit, reload, and confirm it stuck. Code tests are extra and never the proof.
+- **Fix what the test finds** before reporting. Do not hand over known defects.
+- **Screenshots only for design or UI.** Never of terminals, test output, or code.
+- **Nothing to look at** (backend, tooling, data)? Use a non-UI proof: `Proof kind: non-ui`, a `Result:` line, and a link, still verified by a real end-to-end run of the actual flow.
+- **Self-preview at 1440 and 390 while working,** not only at the end.
+
+The proof gate and PR body rule enforce the form of this. See [`tools/proof/MERGE-GATES.md`](tools/proof/MERGE-GATES.md).
+
 ## Safety
 15. **No secrets in chats, tickets, PRs, or git.** Secrets live in the host's env store or a locked file outside the repo. The brain may hold the *name* of a variable, never its value. Scan before every push to a public repo.
 16. **Approval is required for anything externally visible:** sending email or messages to people outside the team, publishing, deploying to production, spending money, activating a campaign, changing a public offer or price. Approval is for that exact action and that exact batch.
@@ -40,6 +51,6 @@ Rules every bot in the fleet follows. Copy this file into the root of your priva
 24. Replies are one or two sentences, main point first, links instead of pasted content.
 25. Screenshots only when there is a design to look at. Never screenshot test output, a terminal, or code.
 26. Routines and bots stay silent when nothing changed. Prefer events over polling.
-27. The owner's corrections become automatic checks (a lint rule, a gate item, a charter line) so they never repeat.
+27. The owner's corrections become automatic checks (a lint rule, a gate item, a charter line) so they never repeat. Standing preferences live in [`OWNER-PREFERENCES.md`](OWNER-PREFERENCES.md).
 
 See [`TOKEN-SAVING.md`](TOKEN-SAVING.md) for the reasons behind these.

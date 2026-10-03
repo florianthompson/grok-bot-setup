@@ -2,7 +2,7 @@
 
 This repo is also a **template**. Use it as a GitHub template, or copy [`template/`](template/) into a private `bot-brain`. The general setup (thin context + spend Claude Code instead of Grok) lives in [`TEMPLATE.md`](TEMPLATE.md).
 
-For a focused checklist, see the [Token saving playbook](TOKEN-SAVING.md). To set up the whole fleet step by step, start with [`SETUP.md`](SETUP.md); the rules are in [`CHARTER.md`](CHARTER.md) and [`RISK-POLICY.md`](RISK-POLICY.md), the roles in [`roles/`](roles/), the brain layout in [`BRAIN-LAYOUT.md`](BRAIN-LAYOUT.md), and proof tooling in [`tools/proof/`](tools/proof/).
+For a focused checklist, see the [Token saving playbook](TOKEN-SAVING.md). To set up the whole fleet step by step, start with [`SETUP.md`](SETUP.md); the rules are in [`CHARTER.md`](CHARTER.md) and [`RISK-POLICY.md`](RISK-POLICY.md), the roles in [`roles/`](roles/), the brain layout in [`BRAIN-LAYOUT.md`](BRAIN-LAYOUT.md), and proof tooling in [`tools/proof/`](tools/proof/). The one-page map is [`STRATEGY.md`](STRATEGY.md) and standing owner preferences go in [`OWNER-PREFERENCES.md`](OWNER-PREFERENCES.md).
 
 A short map for someone new to AI agents. The chat is not the source of truth. Store things on purpose, keep threads thin, and let one home bot spin the rest.
 
