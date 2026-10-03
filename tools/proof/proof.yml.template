@@ -1,0 +1,42 @@
+name: Proof
+
+on:
+  pull_request:
+    # edited: a PR body fix reruns the PR body check without a new push
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+jobs:
+  proof:
+    name: Proof validator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validator tests
+        run: node --test scripts/proof/*.test.mjs
+      - name: PR body proof
+        run: |
+          if [ -f tools/proof/pr_body.mjs ]; then
+            node tools/proof/pr_body.mjs --github-event "$GITHUB_EVENT_PATH"
+          elif [ -f scripts/proof/pr_body.mjs ]; then
+            node scripts/proof/pr_body.mjs --github-event "$GITHUB_EVENT_PATH"
+          else
+            echo "pr_body.mjs is missing. Copy tools/proof/pr_body.mjs into scripts/proof/."
+            exit 1
+          fi
+      - name: Validate changed proof.json files
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          files=$(git diff --name-only --diff-filter=AM "$BASE_SHA" "$HEAD_SHA" -- 'proof/**/proof.json' 'proof/*/proof.json')
+          if [ -z "$files" ]; then
+            echo "No proof.json changed in this pull request. Nothing to validate."
+            exit 0
+          fi
+          echo "$files"
+          echo "$files" | xargs node scripts/proof/validate.mjs --head "$HEAD_SHA"
